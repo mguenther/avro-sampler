@@ -1,0 +1,36 @@
+{
+  "namespace": "net.mguenther.avrosampler.log",
+  "name": "LogEvent",
+  "type": "record",
+  "doc": "Beschreibt ein Systemereignis.",
+  "fields": [
+    {
+      "name": "code",
+      "type": "string",
+      "doc": "Eindeutiger Bezeichner für das Systemereignis.",
+      "order": "ignore"
+    },
+    {
+      "name": "description",
+      "type": ["null", "string"],
+      "default": null,
+      "order": "ignore"
+    },
+    {
+      "name": "timestamp",
+      "type": "long",
+      "logicalType": "date",
+      "order": "descending"
+    },
+    {
+      "name": "severity",
+      "type": {
+        "name": "Severity",
+        "type": "enum",
+        "symbols": ["INFO", "WARN", "ERROR"]
+      },
+      "default": "INFO",
+      "order": "ignore"
+    }
+  ]
+}

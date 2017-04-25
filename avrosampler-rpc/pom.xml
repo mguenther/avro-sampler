@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>net.mguenther.avrosampler</groupId>
+        <artifactId>avrosampler-parent</artifactId>
+        <version>0.1.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>avrosampler-rpc</artifactId>
+    <version>0.1.0-SNAPSHOT</version>
+    <name>[avro-sampler] RPC Parent</name>
+    <packaging>pom</packaging>
+
+    <url>http://www.mguenther.net</url>
+
+    <modules>
+        <module>avrosampler-rpc-protocol</module>
+        <module>avrosampler-rpc-server</module>
+        <module>avrosampler-rpc-client</module>
+    </modules>
+</project>

@@ -1,0 +1,10 @@
+@namespace("net.mguenther.avrosampler.idl.payroll")
+protocol Payroll_1_0 {
+
+  record Employee_1_0 {
+    string name;
+    int age;
+    array<string> emails;
+    union { null, Employee_1_0 } boss;
+  }
+}

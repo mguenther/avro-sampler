@@ -1,0 +1,63 @@
+{
+  "namespace": "net.mguenther.avrosampler.clientregistry",
+  "protocol": "ClientRegistry",
+  "doc": "Defines the RPC API for clients to login and logout.",
+  "types": [
+    {
+      "name": "LoginRequest",
+      "type": "record",
+      "fields": [
+        {
+          "name": "clientId",
+          "type": "string",
+          "doc": "The identifier for the client."
+        },
+        {
+          "name": "clientName",
+          "type": ["null", "string"],
+          "default": null,
+          "doc": "The name of the client. This may be null if the client does not have a dedicated name."
+        }
+      ]
+    },
+    {
+      "name": "LogoutRequest",
+      "type": "record",
+      "fields": [
+        {
+          "name": "clientId",
+          "type": "string",
+          "doc": "The identifier for the client."
+        }
+      ]
+    },
+    {
+      "name": "ServiceError",
+      "type": "error",
+      "fields": [
+        {
+          "name": "code",
+          "type": "int",
+          "doc": "Unique code that identifies an error condition."
+        },
+        {
+          "name": "message",
+          "type": "string",
+          "doc": "Provides a detailed description of the error situation."
+        }
+      ]
+    }
+  ],
+  "messages": {
+    "login": {
+      "request": [{"name": "request", "type": "LoginRequest"}],
+      "response": "string",
+      "errors": ["ServiceError"]
+    },
+    "logout": {
+      "request": [{"name": "request", "type": "LogoutRequest"}],
+      "response": "string",
+      "errors": ["ServiceError"]
+    }
+  }
+}

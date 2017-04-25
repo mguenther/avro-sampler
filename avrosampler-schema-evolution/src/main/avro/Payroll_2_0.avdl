@@ -1,0 +1,11 @@
+@namespace("net.mguenther.avrosampler.idl.payroll")
+protocol Payroll_2_0 {
+
+  @aliases(["net.mguenther.avrosampler.idl.payroll.Employee_1_0"])
+  record Employee_2_0 {
+    string name;
+    int @aliases(["age"]) years;
+    string gender = "unknown";
+    array<string> emails;
+  }
+}
