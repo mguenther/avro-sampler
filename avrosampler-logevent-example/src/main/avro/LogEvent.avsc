@@ -19,7 +19,6 @@
     {
       "name": "timestamp",
       "type": "long",
-      "logicalType": "date",
       "order": "descending"
     },
     {

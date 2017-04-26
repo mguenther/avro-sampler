@@ -1,0 +1,17 @@
+@namespace("net.mguenther.avrosampler.log.idl")
+protocol Log {
+
+  enum Severity {
+    INFO,
+    WARN,
+    ERROR
+  }
+
+  record LogEvent {
+    string code;
+    union { null, string} description = null;
+    @order("descending")
+    long timestamp;
+    Severity severity = "INFO";
+  }
+}

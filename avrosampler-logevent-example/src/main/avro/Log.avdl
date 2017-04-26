@@ -1,0 +1,20 @@
+@namespace("net.mguenther.avrosampler.log")
+protocol Log {
+
+  import schema "LogEvent.avsc";
+
+  record LogEventRequest {
+    /** Identifiziert das übermittelnde System */
+    string clientId;
+    /** Log-Daten vom übermittelnden System */
+    LogEvent data;
+  }
+
+  error ServiceError {
+    /** Beschreibt den Fehlerzustand */
+    string code;
+  }
+
+  /** Submits a LogEventRequest to the RPC server. */
+  void submit(LogEventRequest request) throws ServiceError;
+}

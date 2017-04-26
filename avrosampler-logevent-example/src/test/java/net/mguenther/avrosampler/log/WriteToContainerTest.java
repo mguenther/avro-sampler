@@ -29,19 +29,20 @@ public class WriteToContainerTest {
 
         File containerFile = File.createTempFile("logevent-container", "avro");
 
-        DataFileWriter<LogEvent> writer = new DataFileWriter<>(new SpecificDatumWriter<>(LogEvent.class));
-        writer.create(event.getSchema(), containerFile);
-        writer.append(event);
-        writer.close();
+        try (DataFileWriter<LogEvent> writer = new DataFileWriter<>(new SpecificDatumWriter<>(LogEvent.class))) {
+            writer.create(event.getSchema(), containerFile);
+            writer.append(event);
+        }
 
-        DataFileReader<LogEvent> reader = new DataFileReader<>(containerFile, new SpecificDatumReader<>());
-        LogEvent sameEvent = reader.next();
+        LogEvent sameEvent;
+
+        try (DataFileReader<LogEvent> reader = new DataFileReader<>(containerFile, new SpecificDatumReader<>())) {
+            sameEvent = reader.next();
+        }
 
         assertThat(sameEvent.getCode(), is(event.getCode()));
         assertNull(sameEvent.getDescription());
         assertThat(sameEvent.getSeverity(), is(event.getSeverity()));
         assertThat(sameEvent.getTimestamp(), is(event.getTimestamp()));
-
-        reader.close();
     }
 }
